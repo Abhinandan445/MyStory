@@ -251,14 +251,22 @@ export function CinematicExperience() {
         </motion.div>
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
-          <motion.p
+          <motion.button
+            type="button"
+            onClick={toggleMusic}
+            aria-label={isPlaying ? "Pause soundtrack" : "Play soundtrack"}
             initial={{ opacity: 0, y: 14 }}
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mb-5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/72 backdrop-blur-xl"
+            className="group mb-8 grid size-24 place-items-center rounded-full border border-white/18 bg-white/12 text-white shadow-[0_0_70px_rgba(246,166,201,0.25)] backdrop-blur-2xl transition duration-500 hover:scale-105 hover:bg-white/18 focus:outline-none focus:ring-2 focus:ring-blush/70 sm:size-28"
           >
-            A cinematic memory box
-          </motion.p>
+            <span className="absolute inset-0 rounded-full border border-blush/25 opacity-70 transition duration-500 group-hover:scale-110 group-hover:opacity-100" />
+            {isPlaying ? (
+              <Pause className="relative" size={34} />
+            ) : (
+              <Play className="relative ml-1 fill-white/90" size={36} />
+            )}
+          </motion.button>
           <h1 className="hero-title max-w-5xl overflow-hidden font-serif text-[clamp(4rem,12vw,10.5rem)] leading-[0.82] text-balance">
             <span className="inline-block">Our</span>{" "}
             <span className="inline-block italic text-blush">Story</span>
